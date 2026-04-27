@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MKS Construction | Royal & Responsive</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --dark: #0f0f0f;
+            --accent: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(15, 15, 15, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin-left: 25px; }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .menu-btn {
+            display: none;
+            color: var(--gold);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION (With Building Background) --- */
+        .hero {
+            min-height: 100vh;
+            /* Yahan background image fix ki gayi hai */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect for laptop */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        /* Mobile par parallax band karne ke liye (Performance ke liye) */
+        @media (max-width: 768px) {
+            .hero { background-attachment: scroll; }
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 10vw, 4.5rem);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content span { color: var(--gold); }
+
+        .hero-content p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #ccc;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: 0.4s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* --- SERVICES --- */
+        .services { padding: 100px 5%; text-align: center; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 60px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--accent);
+            padding: 50px 30px;
+            border-radius: 4px;
+            border: 1px solid #222;
+            transition: 0.4s;
+        }
+
+        .card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-10px);
+            background: #222;
+        }
+
+        .card i { font-size: 45px; color: var(--gold); margin-bottom: 25px; }
+
+        /* --- CONTACT --- */
+        .contact { padding: 100px 5%; background: #0a0a0a; }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .contact-form input:focus { border-color: var(--gold); }
+
+        /* --- MOBILE MENU --- */
+        @media (max-width: 992px) {
+            .menu-btn { display: block; }
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                padding-top: 80px;
+                transition: 0.5s;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { margin: 25px 0; }
+            .nav-links a { font-size: 20px; }
+        }
+
+        footer {
+            text-align: center; 
+            padding: 40px; 
+            background: #050505; 
+            color: #666; 
+            font-size: 14px;
+            border-top: 1px solid #111;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">MKS<span>CONSTRUCTION</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building <span>Royal</span> Legacies</h1>
+            <p>High-end infrastructure and luxury commercial spaces built with precision.</p>
+            <a href="#contact" class="btn">Get a Quote</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Our Expertise</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-city"></i>
+                <h3>Mega Structures</h3>
+                <p>Developing iconic landmarks and corporate hubs with modern technology.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Royal Design</h3>
+                <p>Architectural blueprints that blend luxury with functional aesthetics.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-gem"></i>
+                <h3>Interior Art</h3>
+                <p>Exquisite finishing and premium materials for a world-class experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title" style="margin-bottom: 30px;">Let's Connect</h2>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Tell us about your project"></textarea>
+                <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 MKS Construction | Excellence in Engineering.
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("MKS Construction: Dhanyawad! Humari team aapse jald hi sampark karegi.");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
